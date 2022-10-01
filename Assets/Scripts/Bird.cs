@@ -6,6 +6,8 @@ public class Bird : MonoBehaviour
 {
     public float speed = 1;
     private Rigidbody2D rig;
+    public GameObject gameOver;
+    public GameController sn;
 
     // Start is called before the first frame update
     void Start()
@@ -21,4 +23,11 @@ public class Bird : MonoBehaviour
             rig.velocity = Vector2.up * speed;
         }
     }
+
+    void OnCollisionEnter2D(Collision2D collisor){
+        sn = gameObject.GetComponent<GameController>();
+        gameOver.SetActive(true);
+        Time.timeScale = 0;
+    }
+
 }
